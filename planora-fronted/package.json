@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && ionic build",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
@@ -33,7 +33,6 @@
   "devDependencies": {
     "@capacitor/cli": "7.2.0",
     "@types/axios": "^0.9.36",
-    "@ionic/cli": "^7.3.1",
     "@vitejs/plugin-legacy": "^5.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
