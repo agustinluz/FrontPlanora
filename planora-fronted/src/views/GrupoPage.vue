@@ -288,5 +288,5 @@ const logout = () => {
 .content-bg {
   --background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
-.container-content { padding: 0 16px 100px; }
+.container-content { padding: 0 16px 60px; }
 </style>

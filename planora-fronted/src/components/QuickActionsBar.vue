@@ -94,7 +94,7 @@ function isActive(path: string) {
   --padding-end: 0;
   --padding-top: 8px;
   --padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-  --min-height: 70px;
+  --min-height: 100px;
   height: auto;
 }
 
@@ -194,7 +194,7 @@ function isActive(path: string) {
   }
   
   .quick-footer ion-toolbar {
-    --min-height: 65px;
+    --min-height: 120px;
   }
 }
 
@@ -206,7 +206,7 @@ function isActive(path: string) {
   }
   
   .quick-footer ion-toolbar {
-    --min-height: 75px;
+    --min-height: 120px;
   }
 }
 

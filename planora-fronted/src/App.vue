@@ -37,7 +37,7 @@ const showQuickActions = computed(() => {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  --quick-footer-height: 70px;
+  --quick-footer-height: 120px;
 }
 
 /* Cuando hay quick actions, ajustar el layout */
@@ -76,20 +76,20 @@ const showQuickActions = computed(() => {
 /* Safe areas para dispositivos con notch */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   #main-page {
-    --quick-footer-height: calc(70px + env(safe-area-inset-bottom));
+    --quick-footer-height: calc(120px + env(safe-area-inset-bottom));
   }
 }
 
 /* Responsive adjustments */
 @media (max-width: 320px) {
   #main-page {
-    --quick-footer-height: 65px;
+    --quick-footer-height: 105px;
   }
 }
 
 @media (min-width: 768px) {
   #main-page {
-    --quick-footer-height: 75px;
+    --quick-footer-height: 105px;
   }
 }
 

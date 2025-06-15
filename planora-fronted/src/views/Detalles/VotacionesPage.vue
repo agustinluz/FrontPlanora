@@ -38,7 +38,7 @@
           <ion-card v-for="votacion in votacionesFiltradas" :key="votacion.id" class="votacion-card">
             <ion-card-header>
               <div class="votacion-header">
-                <ion-card-title>{{ votacion.titulo }}</ion-card-title>
+                <ion-card-title>{{ votacion.pregunta }}</ion-card-title>
                 <div class="votacion-actions">
                   <ion-badge :color="getEstadoColor(votacion.estado)" class="estado-badge">
                     {{ votacion.estado }}
@@ -69,10 +69,10 @@
                 </div>
               </div>
               <ion-card-subtitle>
-                Por: {{ votacion.nombreCreador || 'Usuario' }} • 
+                Por: {{ votacion.creadaPorNombre || 'Usuario' }} • 
                 {{ formatearFecha(votacion.fechaCreacion) }}
-                <span v-if="votacion.fechaCierre">
-                  • Cierra: {{ formatearFecha(votacion.fechaCierre) }}
+                <span v-if="votacion.fechaLimite">
+                  • Cierra: {{ formatearFecha(votacion.fechaLimite) }}
                 </span>
               </ion-card-subtitle>
             </ion-card-header>
@@ -250,7 +250,7 @@
         
         <ion-content class="ion-padding">
           <div v-if="votacionParaVotar">
-            <h2>{{ votacionParaVotar.titulo }}</h2>
+            <h2>{{ votacionParaVotar.pregunta }}</h2>
             <p v-if="votacionParaVotar.descripcion">{{ votacionParaVotar.descripcion }}</p>
             
             <ion-radio-group v-model="opcionSeleccionada">
@@ -296,7 +296,7 @@
         
         <ion-content class="ion-padding">
           <div v-if="resultadosVotacion">
-            <h2>{{ resultadosVotacion.titulo }}</h2>
+            <h2>{{ resultadosVotacion.titulo || resultadosVotacion.pregunta}}</h2>
             <p><strong>Total de votos:</strong> {{ resultadosVotacion.totalVotos }}</p>
             <p><strong>Estado:</strong> {{ resultadosVotacion.estado }}</p>
             
@@ -449,7 +449,7 @@ const filtrarVotaciones = () => {
 }
 
 const esPropietario = (votacion) => {
-  return usuarioActual.value && votacion.creadoPorId === usuarioActual.value.id
+  return usuarioActual.value && votacion.creadaPorId === usuarioActual.value.id
 }
 
 const getEstadoColor = (estado) => {
@@ -464,10 +464,10 @@ const getEstadoColor = (estado) => {
 const editarVotacion = (votacion) => {
   votacionEditando.value = votacion
   formularioVotacion.value = {
-    pregunta: votacion.titulo,
+    pregunta: votacion.pregunta,
     descripcion: votacion.descripcion || '',
     opciones: [...votacion.opciones],
-    fechaLimite: votacion.fechaCierre
+    fechaLimite: votacion.fechaLimite
   }
   mostrarModalEditar.value = true
 }
@@ -560,7 +560,7 @@ const verResultados = async (votacion) => {
 const cerrarVotacion = async (votacion) => {
   const alert = await alertController.create({
     header: 'Cerrar votación',
-    message: `¿Estás seguro de que quieres cerrar la votación "${votacion.titulo}"? Esta acción no se puede deshacer.`,
+    message: `¿Estás seguro de que quieres cerrar la votación "${votacion.pregunta}"? Esta acción no se puede deshacer.`,
     buttons: [
       {
         text: 'Cancelar',
@@ -591,7 +591,7 @@ const cerrarVotacion = async (votacion) => {
 const confirmarEliminar = async (votacion) => {
   const alert = await alertController.create({
     header: 'Confirmar eliminación',
-    message: `¿Estás seguro de que quieres eliminar la votación "${votacion.titulo}"?`,
+    message: `¿Estás seguro de que quieres eliminar la votación "${votacion.pregunta}"?`,
     buttons: [
       {
         text: 'Cancelar',

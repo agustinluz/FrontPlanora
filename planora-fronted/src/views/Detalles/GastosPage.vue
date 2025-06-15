@@ -58,7 +58,6 @@
         @did-dismiss="mostrarOpciones = false"
       />
 
-      <GastosFab @crear="añadirGasto" />
     </ion-content>
   </ion-page>
 </template>
@@ -76,7 +75,6 @@ import GastosSegment from './Gastos/GastosSegment.vue'
 import GastosLista from './Gastos/GastosLista.vue'
 import GastosEmpty from './Gastos/GastosEmpty.vue'
 import GastoDetalleModal from './Gastos/GastoDetalleModal.vue'
-import GastosFab from './Gastos/GastosFab.vue'
 
 const route = useRoute()
 const router = useRouter()
